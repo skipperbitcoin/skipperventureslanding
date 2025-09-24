@@ -63,8 +63,8 @@
         .nav-links a {
             color: #00457b;
             text-decoration: none;
-            font-weight: 500;
             transition: color 0.3s;
+            font-weight: 500;
         }
 
         .nav-links a:hover {
@@ -155,23 +155,72 @@
             color: #00457b;
         }
 
+        /* Trusted By Section */
+        .trusted-by {
+            padding: 3rem 0;
+            background: #f8f9fa;
+            text-align: center;
+        }
+
+        .trusted-by h3 {
+            font-size: 1.5rem;
+            color: #00457b;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .client-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .client-logo {
+            height: 60px;
+            width: auto;
+            opacity: 0.7;
+            transition: opacity 0.3s, transform 0.3s;
+            filter: grayscale(100%);
+        }
+
+        .client-logo:hover {
+            opacity: 1;
+            transform: scale(1.1);
+            filter: grayscale(0%);
+        }
+
         /* Testimonials Section */
         .testimonials {
             padding: 5rem 0;
-            background: #f8f9fa;
+            background: white;
         }
 
-        .testimonials-grid {
+        .testimonials-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .testimonials-slide {
+            min-width: 100%;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
         }
 
         .testimonial {
-            background: white;
+            background: #f8f9fa;
             padding: 2rem;
             border-radius: 10px;
             border-left: 4px solid #0e80c2;
+            height: fit-content;
         }
 
         .testimonial-text {
@@ -188,6 +237,53 @@
         .testimonial-company {
             color: #666;
             font-size: 0.9rem;
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .carousel-button {
+            background: #0e80c2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .carousel-button:hover {
+            background: #00457b;
+        }
+
+        .carousel-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ccc;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .indicator.active {
+            background: #0e80c2;
         }
 
         /* Banner Section */
@@ -317,6 +413,24 @@
             .banner {
                 background-attachment: scroll;
             }
+
+            .testimonials-slide {
+                grid-template-columns: 1fr;
+            }
+
+            .client-logos {
+                gap: 2rem;
+            }
+
+            .client-logo {
+                height: 45px;
+            }
+        }
+
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .testimonials-slide {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
@@ -358,13 +472,25 @@
                 <div class="service-card">
                     <div class="service-icon">🤖</div>
                     <h3>AI Integration</h3>
-                    <p>Transform your business with cutting-edge artificial intelligence solutions. Achieve hyper-productivity through intelligent automation, predictive analytics, and smart decision-making systems that work 24/7 to optimize your operations.</p>
+                    <p>Transform your business with cutting-edge AI solutions that deliver hyper-productivity. From intelligent automation to predictive analytics, harness the power of artificial intelligence to stay ahead of the competition.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">⚡</div>
                     <h3>Automation Software</h3>
                     <p>Supercharge your efficiency with custom automation solutions. Eliminate repetitive tasks, reduce errors, and free up your team to focus on what matters most.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trusted By Section -->
+    <section class="trusted-by">
+        <div class="container">
+            <h3>Trusted By</h3>
+            <div class="client-logos">
+                <img src="public/assets/company1.svg" alt="Client Company 1" class="client-logo">
+                <img src="public/assets/company2.svg" alt="Client Company 2" class="client-logo">
+                <img src="public/assets/company3.png" alt="Client Company 3" class="client-logo">
             </div>
         </div>
     </section>
@@ -393,36 +519,50 @@
     <section id="testimonials" class="testimonials">
         <div class="container">
             <h2 class="section-title">What Our Clients Say</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial">
-                    <p class="testimonial-text">"TechBridge transformed our bakery operations completely. Their custom inventory system saves us 10 hours per week and eliminated our ordering mistakes. Our stress levels are down and profits are up!"</p>
-                    <div class="testimonial-author">Sarah Martinez</div>
-                    <div class="testimonial-company">Sweet Dreams Bakery</div>
+            <div class="testimonials-container">
+                <div class="testimonials-track" id="testimonialsTrack">
+                    <div class="testimonials-slide">
+                        <div class="testimonial">
+                            <p class="testimonial-text">"TechBridge transformed our bakery operations completely. Their custom inventory system saves us 10 hours per week and eliminated our ordering mistakes. Our stress levels are down and profits are up!"</p>
+                            <div class="testimonial-author">Sarah Martinez</div>
+                            <div class="testimonial-company">Sweet Dreams Bakery</div>
+                        </div>
+                        <div class="testimonial">
+                            <p class="testimonial-text">"The AI integration they set up for our boutique is incredible. Real-time inventory tracking and customer analytics have helped us increase sales by 35%. Best investment we've ever made."</p>
+                            <div class="testimonial-author">Michael Chen</div>
+                            <div class="testimonial-company">Urban Style Boutique</div>
+                        </div>
+                        <div class="testimonial">
+                            <p class="testimonial-text">"Their automation software handles all our appointment scheduling and follow-ups automatically. We can now focus on our patients instead of paperwork. Our practice has never run smoother!"</p>
+                            <div class="testimonial-author">Dr. Amanda Rodriguez</div>
+                            <div class="testimonial-company">Wellness First Clinic</div>
+                        </div>
+                    </div>
+                    <div class="testimonials-slide">
+                        <div class="testimonial">
+                            <p class="testimonial-text">"From concept to deployment, TechBridge was with us every step. The custom app they built for our delivery service increased our efficiency by 50% and our customers love the real-time tracking."</p>
+                            <div class="testimonial-author">James Thompson</div>
+                            <div class="testimonial-company">QuickServe Logistics</div>
+                        </div>
+                        <div class="testimonial">
+                            <p class="testimonial-text">"Working with TechBridge felt like having an extension of our team. They understood our unique needs and delivered exactly what we envisioned. The results speak for themselves."</p>
+                            <div class="testimonial-author">Lisa Park</div>
+                            <div class="testimonial-company">Park's Pet Grooming</div>
+                        </div>
+                        <div class="testimonial">
+                            <p class="testimonial-text">"The automation tools they implemented eliminated hours of manual data entry. Our team is happier, more productive, and we've seen a 25% increase in accuracy across all operations."</p>
+                            <div class="testimonial-author">Robert Johnson</div>
+                            <div class="testimonial-company">Johnson Accounting Services</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="testimonial">
-                    <p class="testimonial-text">"The AI integration they implemented for our boutique is incredible. Real-time inventory prediction and customer behavior analytics have helped us increase sales by 35%. Best investment we've ever made."</p>
-                    <div class="testimonial-author">Michael Chen</div>
-                    <div class="testimonial-company">Urban Style Boutique</div>
+                <div class="carousel-controls">
+                    <button class="carousel-button" id="prevBtn">Previous</button>
+                    <button class="carousel-button" id="nextBtn">Next</button>
                 </div>
-                <div class="testimonial">
-                    <p class="testimonial-text">"Their automation software handles all our appointment scheduling and follow-ups automatically. We can now focus on our patients instead of paperwork. Our practice has never run smoother!"</p>
-                    <div class="testimonial-author">Dr. Amanda Rodriguez</div>
-                    <div class="testimonial-company">Wellness First Clinic</div>
-                </div>
-                <div class="testimonial">
-                    <p class="testimonial-text">"From concept to deployment, TechBridge was with us every step. The custom app they built for our delivery service increased our efficiency by 50% and our customers love the real-time tracking."</p>
-                    <div class="testimonial-author">James Thompson</div>
-                    <div class="testimonial-company">QuickServe Logistics</div>
-                </div>
-                <div class="testimonial">
-                    <p class="testimonial-text">"Working with TechBridge felt like having an extension of our team. They understood our unique needs and delivered exactly what we envisioned. The results speak for themselves."</p>
-                    <div class="testimonial-author">Lisa Park</div>
-                    <div class="testimonial-company">Park's Pet Grooming</div>
-                </div>
-                <div class="testimonial">
-                    <p class="testimonial-text">"The automation tools they implemented eliminated hours of manual data entry. Our team is happier, more productive, and we've seen a 25% increase in accuracy across all operations."</p>
-                    <div class="testimonial-author">Robert Johnson</div>
-                    <div class="testimonial-company">Johnson Accounting Services</div>
+                <div class="carousel-indicators">
+                    <div class="indicator active" data-slide="0"></div>
+                    <div class="indicator" data-slide="1"></div>
                 </div>
             </div>
         </div>
@@ -459,5 +599,68 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Testimonials Carousel Functionality
+        let currentSlide = 0;
+        const totalSlides = 2;
+        const track = document.getElementById('testimonialsTrack');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const indicators = document.querySelectorAll('.indicator');
+
+        function updateCarousel() {
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Update indicators
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentSlide);
+            });
+            
+            // Update button states
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === totalSlides - 1;
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateCarousel();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateCarousel();
+            }
+        }
+
+        function goToSlide(slideIndex) {
+            currentSlide = slideIndex;
+            updateCarousel();
+        }
+
+        // Event listeners
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => goToSlide(index));
+        });
+
+        // Auto-advance carousel every 8 seconds
+        setInterval(() => {
+            if (currentSlide < totalSlides - 1) {
+                nextSlide();
+            } else {
+                currentSlide = 0;
+                updateCarousel();
+            }
+        }, 8000);
+
+        // Initialize carousel
+        updateCarousel();
+    </script>
 </body>
 </html>
