@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechBridge Solutions - Custom Software for Small Business Success</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            color: #00457b;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0, 69, 123, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-image {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #00457b;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #00457b;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #0e80c2;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 69, 123, 0.9), rgba(14, 128, 194, 0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f0f4f8" width="1200" height="600"/><g fill="%2300457b" opacity="0.1"><circle cx="200" cy="150" r="80"/><circle cx="600" cy="300" r="120"/><circle cx="1000" cy="200" r="90"/><rect x="300" y="400" width="100" height="80" rx="10"/><rect x="700" y="100" width="80" height="100" rx="10"/></g></svg>') center/cover;
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #0e80c2;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #00457b;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(14, 128, 194, 0.3);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #00457b;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 69, 123, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+            border: 2px solid #f8f9fa;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: #0e80c2;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #00457b;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 5rem 0;
+            background: #f8f9fa;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid #0e80c2;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #00457b;
+        }
+
+        .testimonial-company {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Banner Section */
+        .banner {
+            background: linear-gradient(rgba(0, 69, 123, 0.8), rgba(14, 128, 194, 0.8)), 
+                        url('public/assets/working-together.jpg') center/cover;
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            background-attachment: fixed;
+        }
+
+        .banner-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .banner-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .banner h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .banner-visual {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+
+        .team-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .team-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .team-icon:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .team-icon:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Footer */
+        footer {
+            background: #00457b;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #0e80c2;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(14, 128, 194, 0.3);
+            opacity: 0.8;
+        }
+
+        .footer .cta-button {
+            background: #0e80c2;
+        }
+
+        .footer .cta-button:hover {
+            background: white;
+            color: #00457b;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .banner-content {
+                flex-direction: column;
+            }
+
+            .logo-container {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .logo-image {
+                height: 30px;
+            }
+
+            .banner {
+                background-attachment: scroll;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo-container">
+                <img src="public/assets/logo.png" alt="TechBridge Solutions Logo" class="logo-image">
+                <div class="logo">TechBridge Solutions</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Custom Software Solutions for Small Business Success</h1>
+            <p class="hero-subtitle">Transform your business with tailored technology that works as hard as you do</p>
+            <a href="#contact" class="cta-button">Get Your Free Consultation</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Our Expertise</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3>Custom App Creation</h3>
+                    <p>Tailored mobile and web applications designed specifically for your business needs. From inventory management to customer portals, we build solutions that scale with your growth.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <h3>AI Integration</h3>
+                    <p>Transform your business with cutting-edge artificial intelligence solutions. Achieve hyper-productivity through intelligent automation, predictive analytics, and smart decision-making systems that work 24/7 to optimize your operations.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>Automation Software</h3>
+                    <p>Supercharge your efficiency with custom automation solutions. Eliminate repetitive tasks, reduce errors, and free up your team to focus on what matters most.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner Section -->
+    <section class="banner">
+        <div class="container">
+            <div class="banner-content">
+                <div class="banner-text">
+                    <h2>Better Technology, Better Life</h2>
+                    <p>Join hundreds of small businesses who've discovered the power of working smarter, not harder. Our solutions don't just improve your bottom line—they give you back your time and peace of mind.</p>
+                </div>
+                <div class="banner-visual">
+                    <div class="team-icons">
+                        <div class="team-icon">👥</div>
+                        <div class="team-icon">🤝</div>
+                        <div class="team-icon">✨</div>
+                    </div>
+                    <p><strong>Teamwork • Innovation • Success</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Clients Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <p class="testimonial-text">"TechBridge transformed our bakery operations completely. Their custom inventory system saves us 10 hours per week and eliminated our ordering mistakes. Our stress levels are down and profits are up!"</p>
+                    <div class="testimonial-author">Sarah Martinez</div>
+                    <div class="testimonial-company">Sweet Dreams Bakery</div>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"The AI integration they implemented for our boutique is incredible. Real-time inventory prediction and customer behavior analytics have helped us increase sales by 35%. Best investment we've ever made."</p>
+                    <div class="testimonial-author">Michael Chen</div>
+                    <div class="testimonial-company">Urban Style Boutique</div>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"Their automation software handles all our appointment scheduling and follow-ups automatically. We can now focus on our patients instead of paperwork. Our practice has never run smoother!"</p>
+                    <div class="testimonial-author">Dr. Amanda Rodriguez</div>
+                    <div class="testimonial-company">Wellness First Clinic</div>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"From concept to deployment, TechBridge was with us every step. The custom app they built for our delivery service increased our efficiency by 50% and our customers love the real-time tracking."</p>
+                    <div class="testimonial-author">James Thompson</div>
+                    <div class="testimonial-company">QuickServe Logistics</div>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"Working with TechBridge felt like having an extension of our team. They understood our unique needs and delivered exactly what we envisioned. The results speak for themselves."</p>
+                    <div class="testimonial-author">Lisa Park</div>
+                    <div class="testimonial-company">Park's Pet Grooming</div>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"The automation tools they implemented eliminated hours of manual data entry. Our team is happier, more productive, and we've seen a 25% increase in accuracy across all operations."</p>
+                    <div class="testimonial-author">Robert Johnson</div>
+                    <div class="testimonial-company">Johnson Accounting Services</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p>📍 123 Innovation Drive<br>
+                    Tech Valley, CA 94025</p>
+                    <p>📞 (555) 123-TECH<br>
+                    📧 hello@techbridgesolutions.com</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Business Hours</h3>
+                    <p>Monday - Friday: 9:00 AM - 6:00 PM<br>
+                    Saturday: 10:00 AM - 4:00 PM<br>
+                    Sunday: Closed</p>
+                    <p><em>Emergency support available 24/7</em></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Get Started Today</h3>
+                    <p>Ready to transform your business? Schedule your free consultation and discover how custom software can supercharge your success.</p>
+                    <p style="margin-top: 1rem;">
+                        <a href="mailto:hello@techbridgesolutions.com" class="cta-button" style="display: inline-block; padding: 10px 20px; font-size: 0.9rem;">Schedule Consultation</a>
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 TechBridge Solutions. All rights reserved. | Empowering small businesses through innovative technology.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
