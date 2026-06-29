@@ -3,694 +3,425 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skipper Ventures - Custom Software for Small Business</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Skipper Ventures LLC</title>
+    <link rel="icon" href="public/assets/logo.png" type="image/png">   
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            background: #050505;
+            color: #ffffff;
+            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
         }
 
-        .text-skipper-blue {
-            color: #0f80c2;
-        }
-
-        .hover-text-skipper-blue {
-            color: #0f80c2;
-        }
-
-        .hover-text-skipper-blue:hover {
-            color: #00457b;
-        }
-
-        .border-skipper-blue {
-            border-color: #0f80c2;
-        }
-
-        .background-skipper-blue {
-            background-color: #0f80c2;
-        }
-
-        .background-deep-skipper-blue {
-            background-color: #00457b;
-        }
-
-        .hover-background-skipper-blue {
-            background-color: #0f80c2;
-        }
-
-        .hover-background-skipper-blue:hover {
-            background-color: #00457b;
-        }
-
-        .code-background {
+        body::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            opacity: 0.1;
-            overflow: hidden;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 100px 100px;
             pointer-events: none;
         }
 
-        .code-lines {
-            font-family: 'Courier New', monospace;
+        .company {
+            position: absolute;
+            top: 50px;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 12px;
+            text-transform: uppercase;
+            opacity: 0.5;
+            color: white;
+        }
+
+        .tagline-container {
+            text-align: center;
+        }
+
+        .tagline {
+            font-size: clamp(3rem, 12vw, 9rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 0.85;
+            display: block;
+            font-family: 'Inter', 'Helvetica Neue', 'Arial Black', sans-serif;
+            white-space: nowrap;
+        }
+
+        .tagline span {
+            display: inline-block;
+            text-shadow: 0 0 60px rgba(255,255,255,0.1);
+        }
+
+        .line-1 span:nth-child(1) { animation: float-1 4s ease-in-out infinite; }
+        .line-1 span:nth-child(2) { animation: float-2 5s ease-in-out infinite 0.2s; }
+        .line-1 span:nth-child(3) { animation: float-3 4.5s ease-in-out infinite 0.4s; }
+        .line-1 span:nth-child(4) { animation: float-4 5.5s ease-in-out infinite 0.6s; }
+        .line-1 span:nth-child(5) { animation: float-5 4.2s ease-in-out infinite 0.8s; }
+        .line-1 span:nth-child(6) { animation: float-6 5.2s ease-in-out infinite 1s; }
+        .line-1 span:nth-child(7) { animation: float-7 4.8s ease-in-out infinite 1.2s; }
+        .line-1 span:nth-child(8) { animation: float-8 5.8s ease-in-out infinite 1.4s; }
+        .line-1 span:nth-child(9) { animation: float-9 4.3s ease-in-out infinite 1.6s; }
+        .line-1 span:nth-child(10) { animation: float-10 5.3s ease-in-out infinite 1.8s; }
+        .line-1 span:nth-child(11) { animation: float-11 4.7s ease-in-out infinite 2s; }
+        .line-1 span:nth-child(12) { animation: float-12 5.7s ease-in-out infinite 2.2s; }
+
+        .line-2 { margin-top: 10px; }
+        .line-2 span:nth-child(1) { animation: float-13 4.5s ease-in-out infinite 0.1s; opacity: 0.95; }
+        .line-2 span:nth-child(2) { animation: float-14 5.5s ease-in-out infinite 0.3s; opacity: 0.9; }
+        .line-2 span:nth-child(3) { animation: float-15 4.2s ease-in-out infinite 0.5s; opacity: 0.85; }
+        .line-2 span:nth-child(4) { animation: float-16 5.2s ease-in-out infinite 0.7s; opacity: 0.8; }
+        .line-2 span:nth-child(5) { animation: float-17 4.8s ease-in-out infinite 0.9s; opacity: 0.75; }
+        .line-2 span:nth-child(6) { animation: float-18 5.8s ease-in-out infinite 1.1s; opacity: 0.7; }
+        .line-2 span:nth-child(7) { animation: float-19 4.3s ease-in-out infinite 1.3s; opacity: 0.65; }
+        .line-2 span:nth-child(8) { animation: float-20 5.3s ease-in-out infinite 1.5s; opacity: 0.6; }
+        .line-2 span:nth-child(9) { animation: float-21 4.7s ease-in-out infinite 1.7s; opacity: 0.55; }
+        .line-2 span:nth-child(10) { animation: float-22 5.7s ease-in-out infinite 1.9s; opacity: 0.5; }
+
+        @keyframes float-1 { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(-8px, -6px) rotate(-1deg); } }
+        @keyframes float-2 { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(6px, 8px) rotate(1deg); } }
+        @keyframes float-3 { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(-5px, 10px) rotate(-2deg); } }
+        @keyframes float-4 { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(10px, -5px) rotate(2deg); } }
+        @keyframes float-5 { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(-7px, -8px) rotate(-1deg); } }
+        @keyframes float-6 { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(5px, 7px) rotate(1deg); } }
+        @keyframes float-7 { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(-9px, 5px) rotate(-2deg); } }
+        @keyframes float-8 { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(7px, -9px) rotate(2deg); } }
+        @keyframes float-9 { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(-6px, 6px) rotate(-1deg); } }
+        @keyframes float-10 { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(8px, -7px) rotate(1deg); } }
+        @keyframes float-11 { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(-5px, -5px) rotate(-2deg); } }
+        @keyframes float-12 { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(9px, 8px) rotate(2deg); } }
+        @keyframes float-13 { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(-12px, 4px) rotate(-2deg); } }
+        @keyframes float-14 { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(8px, -10px) rotate(2deg); } }
+        @keyframes float-15 { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(-6px, 12px) rotate(-1deg); } }
+        @keyframes float-16 { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(11px, -6px) rotate(3deg); } }
+        @keyframes float-17 { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(-8px, 8px) rotate(-2deg); } }
+        @keyframes float-18 { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(6px, -11px) rotate(1deg); } }
+        @keyframes float-19 { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(-10px, 7px) rotate(-3deg); } }
+        @keyframes float-20 { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(7px, -8px) rotate(2deg); } }
+        @keyframes float-21 { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(-9px, 10px) rotate(-1deg); } }
+        @keyframes float-22 { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(12px, -5px) rotate(3deg); } }
+
+        .collaborate-btn {
+            margin-top: 100px;
+            padding: 16px 40px;
+            background: transparent;
+            border: 2px solid #333;
+            color: #888;
+            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .collaborate-btn:hover {
+            border-color: #fff;
+            color: #fff;
+            background: rgba(255,255,255,0.05);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(255,255,255,0.1);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5,5,5,0.98);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #0a0a0a;
+            border: 2px solid #222;
+            padding: 50px;
+            width: 90%;
+            max-width: 480px;
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            background: none;
+            border: none;
+            color: #444;
+            font-size: 28px;
+            font-weight: 300;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-btn:hover {
+            color: #fff;
+        }
+
+        .modal h2 {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-bottom: 35px;
+            color: #666;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #444;
+            margin-bottom: 10px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            background: #050505;
+            border: 1px solid #1a1a1a;
+            color: #fff;
+            padding: 16px;
+            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
             font-size: 14px;
-            line-height: 1.5;
-            color: #60a5fa;
-            white-space: pre;
-            animation: float 20s linear infinite;
+            font-weight: 500;
+            outline: none;
+            transition: all 0.3s;
         }
 
-        @keyframes float {
-            0% { transform: translateY(100vh); }
-            100% { transform: translateY(-100%); }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #444;
+            background: #080808;
         }
 
-        .carousel-container {
-            transition: transform 0.5s ease-in-out;
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
         }
 
-        .floating-elements {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            overflow: hidden;
-            pointer-events: none;
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: #111;
+            border: 2px solid #333;
+            color: #666;
+            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
-        .floating-circle {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(59, 130, 246, 0.1);
-            animation: floatUpDown 6s ease-in-out infinite;
+        .submit-btn:hover:not(:disabled) {
+            background: #1a1a1a;
+            border-color: #555;
+            color: #fff;
         }
 
-        @keyframes floatUpDown {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+        .submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
         }
 
-        .floating-circle:nth-child(1) {
-            width: 60px;
-            height: 60px;
-            top: 20%;
-            left: 10%;
-            animation-delay: 0s;
+        .success-message, .error-message {
+            display: none;
+            text-align: center;
+            padding: 30px;
         }
 
-        .floating-circle:nth-child(2) {
-            width: 40px;
-            height: 40px;
-            top: 60%;
-            right: 15%;
-            animation-delay: 2s;
+        .success-message.active, .error-message.active {
+            display: block;
         }
 
-        .floating-circle:nth-child(3) {
-            width: 80px;
-            height: 80px;
-            bottom: 30%;
-            left: 80%;
-            animation-delay: 4s;
+        .success-message p {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #666;
+            line-height: 2;
+        }
+
+        .error-message p {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #844;
+            line-height: 1.8;
+        }
+
+        .error-message button {
+            margin-top: 20px;
+            padding: 10px 24px;
+            background: transparent;
+            border: 1px solid #522;
+            color: #844;
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .error-message button:hover {
+            border-color: #844;
+            color: #a66;
         }
     </style>
 </head>
-<body class="bg-white text-gray-800">
-    <!-- Header -->
-    <header class="bg-white shadow-md sticky top-0 z-50">
-        <nav class="container mx-auto px-6 py-4">
-            <div class="flex justify-between items-center">
-                <div class="flex items-center space-x-2">
-                    <img src="public/assets/logo.png" alt="Skipper Ventures" class="h-8 w-8">
-                    <span class="text-xl font-bold text-skipper-blue">Skipper Ventures</span>
-                </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="hover-text-skipper-blue transition duration-300">Home</a>
-                    <a href="#services" class="hover-text-skipper-blue transition duration-300">Services</a>
-                    <a href="#about" class="hover-text-skipper-blue transition duration-300">About</a>
-                    <a href="#testimonials" class="hover-text-skipper-blue transition duration-300">Testimonials</a>
-                    <a href="#contact" class="hover-text-skipper-blue transition duration-300">Contact</a>
-                </div>
-                <button class="md:hidden text-skipper-blue">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-            </div>
-        </nav>
-    </header>
-
-    <!-- Hero Section -->
-    <section id="home" class="relative bg-gradient-to-br from-blue-50 to-white min-h-screen flex items-center overflow-hidden">
-        <!-- Code Background -->
-        <div class="code-background">
-            <div class="code-lines">
-const businessSolution = {
-  efficiency: 'maximized',
-  costs: 'reduced',
-  growth: 'accelerated'
-};
-
-function transformBusiness(requirements) {
-  const solution = customSoftware(requirements);
-  return solution.optimize().deploy();
-}
-
-class SmallBusiness {
-  constructor(vision) {
-    this.vision = vision;
-    this.potential = 'unlimited';
-  }
-  
-  implement(technology) {
-    return this.vision + technology;
-  }
-}
-
-// Your success story starts here
-const success = new SmallBusiness('innovation');
-console.log(success.implement('custom_software'));
-            </div>
-        </div>
-
-        <!-- Floating Elements -->
-        <div class="floating-elements">
-            <div class="floating-circle"></div>
-            <div class="floating-circle"></div>
-            <div class="floating-circle"></div>
-        </div>
-
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="max-w-4xl mx-auto text-center">
-                <h1 class="text-5xl md:text-6xl font-bold text-gray-800 mb-6">
-                    Custom Software Solutions for 
-                    <span class="text-skipper-blue">Small Business Success</span>
-                </h1>
-                <p class="text-xl text-gray-600 mb-8 leading-relaxed">
-                    Transform your business operations with tailored software solutions designed specifically for small businesses. 
-                    Increase efficiency, reduce costs, and accelerate growth with our expert development team.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#contact">
-                        <button class="hover-background-skipper-blue text-white px-8 py-4 rounded-lg font-semibold transition duration-300 shadow-lg">
-                            Get Started Today
-                        </button>
-                    </a>
-                    <!-- <button class="border-2 border-skipper-blue text-skipper-blue px-8 py-4 rounded-lg font-semibold hover:background-skipper-blue hover:text-white transition duration-300">
-                        View Our Work
-                    </button> -->
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="py-20 bg-gray-50">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-800 mb-4">Our Services</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    We provide comprehensive software solutions tailored to meet the unique needs of small businesses across various industries.
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Custom Web Applications -->
-                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
-                    <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-skipper-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9"></path>
-                        </svg>
+<body>
+    <div class="company">Skipper Ventures LLC</div>
+    
+    <div class="tagline-container">
+        <h1 class="tagline line-1">
+            <span>D</span><span>E</span><span>C</span><span>E</span><span>N</span><span>T</span><span>R</span><span>A</span><span>L</span><span>I</span><span>Z</span><span>E</span>
+        </h1>
+        <h1 class="tagline line-2">
+            <span>E</span><span>V</span><span>E</span><span>R</span><span>Y</span><span>T</span><span>H</span><span>I</span><span>N</span><span>G</span>
+        </h1>
+    </div>
+    
+    <button class="collaborate-btn" onclick="openModal()">Collaborate with us</button>
+    
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">×</button>
+            
+            <div id="formContainer">
+                <h2>Contact Us</h2>
+                <form id="contactForm" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="email" required placeholder="you@domain.com">
                     </div>
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Custom Web Applications</h3>
-                    <p class="text-gray-600 mb-6">
-                        Build powerful, responsive web applications that streamline your business processes and enhance customer engagement.
-                    </p>
-                    <ul class="text-gray-600 space-y-2">
-                        <li>• Responsive design</li>
-                        <li>• Database integration</li>
-                        <li>• User authentication</li>
-                        <li>• API development</li>
-                    </ul>
-                </div>
-
-                <!-- E-commerce Solutions -->
-                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
-                    <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-skipper-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m0 0h8.5M17 18a2 2 0 11-4 0 2 2 0 014 0zm-8 0a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                        </svg>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" id="name" required placeholder="Satoshi Nakamoto">
                     </div>
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">E-commerce Solutions</h3>
-                    <p class="text-gray-600 mb-6">
-                        Launch your online store with custom e-commerce platforms designed to maximize sales and customer satisfaction.
-                    </p>
-                    <ul class="text-gray-600 space-y-2">
-                        <li>• Payment processing</li>
-                        <li>• Inventory management</li>
-                        <li>• Order tracking</li>
-                        <li>• Mobile optimization</li>
-                    </ul>
-                </div>
-
-                <!-- AI Integration -->
-                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
-                    <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-skipper-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-                        </svg>
+                    <div class="form-group">
+                        <label>Subject</label>
+                        <input type="text" id="subject" required placeholder="Partnership Inquiry">
                     </div>
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">AI Integration</h3>
-                    <p class="text-gray-600 mb-6">
-                        Transform your business with cutting-edge AI solutions that deliver hyper-productivity through intelligent automation, predictive analytics, and smart decision-making tools.
-                    </p>
-                    <ul class="text-gray-600 space-y-2">
-                        <li>• Automated workflows</li>
-                        <li>• Predictive analytics</li>
-                        <li>• Chatbot integration</li>
-                        <li>• Data insights</li>
-                    </ul>
-                </div>
-
-                <!-- Business Automation -->
-                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
-                    <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-skipper-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                        </svg>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea id="message" required placeholder="Your message..."></textarea>
                     </div>
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Business Automation</h3>
-                    <p class="text-gray-600 mb-6">
-                        Automate repetitive tasks and workflows to save time, reduce errors, and allow your team to focus on strategic growth.
-                    </p>
-                    <ul class="text-gray-600 space-y-2">
-                        <li>• Workflow automation</li>
-                        <li>• Data synchronization</li>
-                        <li>• Report generation</li>
-                        <li>• Task scheduling</li>
-                    </ul>
-                </div>
-
-                <!-- Mobile Applications -->
-                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
-                    <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-skipper-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a1 1 0 001-1V4a1 1 0 00-1-1H8a1 1 0 00-1 1v16a1 1 0 001 1z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Mobile Applications</h3>
-                    <p class="text-gray-600 mb-6">
-                        Reach your customers wherever they are with native mobile applications for iOS and Android platforms.
-                    </p>
-                    <ul class="text-gray-600 space-y-2">
-                        <li>• Native development</li>
-                        <li>• Cross-platform solutions</li>
-                        <li>• Push notifications</li>
-                        <li>• Offline functionality</li>
-                    </ul>
-                </div>
-
-                <!-- Database Solutions -->
-                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
-                    <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-skipper-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Database Solutions</h3>
-                    <p class="text-gray-600 mb-6">
-                        Organize and secure your business data with robust database solutions that scale with your growth.
-                    </p>
-                    <ul class="text-gray-600 space-y-2">
-                        <li>• Data modeling</li>
-                        <li>• Performance optimization</li>
-                        <li>• Backup solutions</li>
-                        <li>• Security implementation</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-4xl font-bold text-gray-800 mb-8">Why Choose Skipper Ventures?</h2>
-                <p class="text-xl text-gray-600 mb-12 leading-relaxed">
-                    We understand the unique challenges small businesses face. Our team combines technical expertise 
-                    with business acumen to deliver solutions that not only work but drive real results.
-                </p>
-                
-                <div class="grid md:grid-cols-3 gap-8 mt-16">
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-8 h-8 text-skipper-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Fast Delivery</h3>
-                        <p class="text-gray-600">Quick turnaround times without compromising on quality</p>
-                    </div>
-                    
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-8 h-8 text-skipper-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Cost-Effective</h3>
-                        <p class="text-gray-600">Affordable solutions tailored to small business budgets</p>
-                    </div>
-                    
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-8 h-8 text-skipper-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Ongoing Support</h3>
-                        <p class="text-gray-600">Continuous maintenance and updates to keep you running smoothly</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Trusted By Section -->
-    <section class="py-16 bg-gray-50">
-        <div class="container mx-auto px-6">
-            <div class="text-center">
-                <h3 class="text-2xl font-semibold text-gray-800 mb-8">Trusted By</h3>
-                <div class="flex justify-center items-center space-x-12">
-                    <img src="public/assets/company1.svg" alt="Company 1" class="h-12 opacity-60 hover:opacity-100 transition duration-300">
-                    <img src="public/assets/company2.svg" alt="Company 2" class="h-12 opacity-60 hover:opacity-100 transition duration-300">
-                    <img src="public/assets/company3.png" alt="Company 3" class="h-12 opacity-60 hover:opacity-100 transition duration-300">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="py-20 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-800 mb-4">What Our Clients Say</h2>
-                <p class="text-xl text-gray-600">
-                    Don't just take our word for it - hear from businesses we've helped transform
-                </p>
-            </div>
-
-            <div class="relative max-w-6xl mx-auto">
-                <div class="overflow-hidden">
-                    <div id="testimonialCarousel" class="carousel-container flex transition-transform duration-500 ease-in-out">
-                        <!-- Visible Testimonials (First 3) -->
-                        <div class="flex-shrink-0 w-full flex space-x-6">
-                            <div class="flex-1 bg-gray-50 p-8 rounded-xl">
-                                <div class="flex items-center mb-4">
-                                    <div class="w-12 h-12 background-skipper-blue rounded-full flex items-center justify-center text-white font-bold mr-4">
-                                        S
-                                    </div>
-                                    <div>
-                                        <h4 class="font-semibold text-gray-800">Sarah Johnson</h4>
-                                        <p class="text-gray-600 text-sm">Owner, Boutique Fashion</p>
-                                    </div>
-                                </div>
-                                <p class="text-gray-600 italic">
-                                    "Skipper Ventures transformed our inventory management completely. What used to take hours now happens automatically. Our sales increased by 40% in the first quarter!"
-                                </p>
-                                <div class="flex text-yellow-400 mt-4">
-                                    ★★★★★
-                                </div>
-                            </div>
-
-                            <div class="flex-1 bg-gray-50 p-8 rounded-xl">
-                                <div class="flex items-center mb-4">
-                                    <div class="w-12 h-12 background-skipper-blue rounded-full flex items-center justify-center text-white font-bold mr-4">
-                                        M
-                                    </div>
-                                    <div>
-                                        <h4 class="font-semibold text-gray-800">Mike Rodriguez</h4>
-                                        <p class="text-gray-600 text-sm">CEO, Local Restaurant Chain</p>
-                                    </div>
-                                </div>
-                                <p class="text-gray-600 italic">
-                                    "The custom ordering system they built for us streamlined our entire operation. Customer satisfaction is up and our staff can focus on what matters most - great food and service."
-                                </p>
-                                <div class="flex text-yellow-400 mt-4">
-                                    ★★★★★
-                                </div>
-                            </div>
-
-                            <div class="flex-1 bg-gray-50 p-8 rounded-xl">
-                                <div class="flex items-center mb-4">
-                                    <div class="w-12 h-12 background-skipper-blue rounded-full flex items-center justify-center text-white font-bold mr-4">
-                                        E
-                                    </div>
-                                    <div>
-                                        <h4 class="font-semibold text-gray-800">Emily Chen</h4>
-                                        <p class="text-gray-600 text-sm">Founder, Fitness Studio</p>
-                                    </div>
-                                </div>
-                                <p class="text-gray-600 italic">
-                                    "Their mobile app for class bookings revolutionized how our members interact with us. We've seen a 60% increase in class attendance since launch."
-                                </p>
-                                <div class="flex text-yellow-400 mt-4">
-                                    ★★★★★
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Hidden Testimonials (Next 3) -->
-                        <div class="flex-shrink-0 w-full flex space-x-6">
-                            <div class="flex-1 bg-gray-50 p-8 rounded-xl">
-                                <div class="flex items-center mb-4">
-                                    <div class="w-12 h-12 background-skipper-blue rounded-full flex items-center justify-center text-white font-bold mr-4">
-                                        D
-                                    </div>
-                                    <div>
-                                        <h4 class="font-semibold text-gray-800">David Thompson</h4>
-                                        <p class="text-gray-600 text-sm">Owner, Auto Repair Shop</p>
-                                    </div>
-                                </div>
-                                <p class="text-gray-600 italic">
-                                    "The service tracking system they developed helps us manage appointments and follow up with customers automatically. Our repeat business has doubled!"
-                                </p>
-                                <div class="flex text-yellow-400 mt-4">
-                                    ★★★★★
-                                </div>
-                            </div>
-
-                            <div class="flex-1 bg-gray-50 p-8 rounded-xl">
-                                <div class="flex items-center mb-4">
-                                    <div class="w-12 h-12 background-skipper-blue rounded-full flex items-center justify-center text-white font-bold mr-4">
-                                        L
-                                    </div>
-                                    <div>
-                                        <h4 class="font-semibold text-gray-800">Lisa Martinez</h4>
-                                        <p class="text-gray-600 text-sm">Director, Marketing Agency</p>
-                                    </div>
-                                </div>
-                                <p class="text-gray-600 italic">
-                                    "Skipper Ventures' project management solution keeps our team organized and our clients happy. We can handle 3x more projects with the same staff size."
-                                </p>
-                                <div class="flex text-yellow-400 mt-4">
-                                    ★★★★★
-                                </div>
-                            </div>
-
-                            <div class="flex-1 bg-gray-50 p-8 rounded-xl">
-                                <div class="flex items-center mb-4">
-                                    <div class="w-12 h-12 background-skipper-blue rounded-full flex items-center justify-center text-white font-bold mr-4">
-                                        J
-                                    </div>
-                                    <div>
-                                        <h4 class="font-semibold text-gray-800">James Wilson</h4>
-                                        <p class="text-gray-600 text-sm">Owner, Consulting Firm</p>
-                                    </div>
-                                </div>
-                                <p class="text-gray-600 italic">
-                                    "Their custom CRM system integrates perfectly with our workflow. We've improved client retention by 45% and streamlined our sales process completely."
-                                </p>
-                                <div class="flex text-yellow-400 mt-4">
-                                    ★★★★★
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Carousel Navigation -->
-                <div class="flex justify-center mt-8 space-x-2">
-                    <button onclick="showTestimonials(0)" class="w-3 h-3 rounded-full background-skipper-blue testimonial-dot" data-index="0"></button>
-                    <button onclick="showTestimonials(1)" class="w-3 h-3 rounded-full bg-gray-300 testimonial-dot" data-index="1"></button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 background-deep-skipper-blue text-white">
-        <div class="container mx-auto px-6">
-            <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-4xl font-bold mb-8">Ready to Transform Your Business?</h2>
-                <p class="text-xl mb-12 opacity-90">
-                    Let's discuss how custom software can streamline your operations and accelerate your growth.
-                </p>
-                
-                <div class="grid md:grid-cols-2 gap-12">
-                    <div>
-                        <h3 class="text-2xl font-semibold mb-6">Get In Touch</h3>
-                        <div class="space-y-4 text-left">
-                            <div class="flex items-center">
-                                <svg class="w-6 h-6 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                                </svg>
-                                <span>+1 (307) 306-4633</span>
-                            </div>
-                            <div class="flex items-center">
-                                <svg class="w-6 h-6 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                                </svg>
-                                <span>skipperventures@proton.me</span>
-                            </div>
-                            <div class="flex items-center">
-                                <svg class="w-6 h-6 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                </svg>
-                                <span>30 N Gould St #37395, Sheridan, WY 82801</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <form class="space-y-4">
-                            <input type="text" placeholder="Your Name" class="w-full px-4 py-3 rounded-lg text-gray-800">
-                            <input type="email" placeholder="Your Email" class="w-full px-4 py-3 rounded-lg text-gray-800">
-                            <textarea placeholder="Tell us about your project" rows="4" class="w-full px-4 py-3 rounded-lg text-gray-800"></textarea>
-                            <button type="submit" class="w-full bg-white text-skipper-blue py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">
-                                Send Message
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-12">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-4 gap-8">
-                <div>
-                    <div class="flex items-center space-x-2 mb-4">
-                        <img src="public/assets/logo.png" alt="Skipper Ventures" class="h-8 w-8">
-                        <span class="text-xl font-bold">Skipper Ventures</span>
-                    </div>
-                    <p class="text-gray-400">
-                        Empowering small businesses with custom software solutions that drive growth and efficiency.
-                    </p>
-                </div>
-                
-                <div>
-                    <h4 class="font-semibold mb-4">Services</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <!-- <li><a href="#" class="hover:text-white">Web Applications</a></li> -->
-                        <!-- <li><a href="#" class="hover:text-white">E-commerce Solutions</a></li> -->
-                        <!-- <li><a href="#" class="hover:text-white">AI Integration</a></li> -->
-                        <!-- <li><a href="#" class="hover:text-white">Mobile Apps</a></li> -->
-                        <li>Web Applications</li>
-                        <li>E-commerce Solutions</li>
-                        <li>AI Integration</li>
-                        <li>Mobile Apps</li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="font-semibold mb-4">Company</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#about" class="hover:text-white">About Us</a></li>
-                        <li><a href="#services" class="hover:text-white">Our Services</a></li>
-                        <li><a href="#testimonials" class="hover:text-white">Testimonials</a></li>
-                        <li><a href="#contact" class="hover:text-white">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="font-semibold mb-4">Follow Us</h4>
-                    <div class="flex space-x-4">
-                        <a href="https://x.com/SkipperVentures" class="text-gray-400 hover:text-white">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
-                            </svg>
-                        </a>
-                        <!-- <a href="#" class="text-gray-400 hover:text-white">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
-                            </svg>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                            </svg>
-                        </a> -->
-                    </div>
-                </div>
+                    <button type="submit" class="submit-btn" id="submitBtn">Send</button>
+                </form>
             </div>
             
-            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2024 Skipper Ventures LLC. All rights reserved.</p>
+            <div class="success-message" id="successMessage">
+                <p>Thank you for contacting us. We will be in touch.</p>
+                <p style="margin-top: 20px; font-size: 10px; color: #333;">Message sent to info@skipper.ventures</p>
+            </div>
+
+            <div class="error-message" id="errorMessage">
+                <p>Transmission Failed</p>
+                <p style="font-size: 10px; color: #555; margin-top: 10px;">Please try again or contact directly</p>
+                <button onclick="resetForm()">Retry</button>
             </div>
         </div>
-    </footer>
+    </div>
 
     <script>
-        let currentTestimonialSet = 0;
-        const totalSets = 2;
+        emailjs.init("hrQYWVt0Qstn8p_kb");
 
-        function showTestimonials(setIndex) {
-            const carousel = document.getElementById('testimonialCarousel');
-            const dots = document.querySelectorAll('.testimonial-dot');
-            
-            currentTestimonialSet = setIndex;
-            carousel.style.transform = `translateX(-${setIndex * 100}%)`;
-            
-            // Update dots
-            dots.forEach((dot, index) => {
-                if (index === setIndex) {
-                    dot.classList.add('background-skipper-blue');
-                    dot.classList.remove('bg-gray-300');
-                } else {
-                    dot.classList.add('bg-gray-300');
-                    dot.classList.remove('background-skipper-blue');
-                }
-            });
+        function openModal() {
+            document.getElementById('contactModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            document.getElementById('contactModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+            setTimeout(() => {
+                resetForm();
+            }, 300);
         }
 
-        // Auto-rotate testimonials every 5 seconds
-        setInterval(() => {
-            const nextSet = (currentTestimonialSet + 1) % totalSets;
-            showTestimonials(nextSet);
-        }, 5000);
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
+        function resetForm() {
+            document.getElementById('contactForm').reset();
+            document.getElementById('formContainer').style.display = 'block';
+            document.getElementById('successMessage').classList.remove('active');
+            document.getElementById('errorMessage').classList.remove('active');
+            document.getElementById('submitBtn').disabled = false;
+            document.getElementById('submitBtn').textContent = 'Transmit';
+        }
+        
+        function handleSubmit(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+            
+            const templateParams = {
+                from_email: document.getElementById('email').value,
+                name: document.getElementById('name').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value,
+            };
+            
+            emailjs.send('service_cp0fb4i', 'template_cjmfzl6', templateParams)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    document.getElementById('formContainer').style.display = 'none';
+                    document.getElementById('successMessage').classList.add('active');
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    document.getElementById('formContainer').style.display = 'none';
+                    document.getElementById('errorMessage').classList.add('active');
+                });
+        }
+        
+        document.getElementById('contactModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
         });
     </script>
 </body>
